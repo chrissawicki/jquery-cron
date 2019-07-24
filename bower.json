@@ -1,0 +1,19 @@
+{
+  "name": "jquery-cron",
+  "homepage": "https://github.com/chrissawicki/jquery-cron",
+  "version": "0.1.4.1",
+  "main": [
+    "./cron/jquery-cron.js"
+  ],
+  "authors": [
+    "Shawn Chin"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
