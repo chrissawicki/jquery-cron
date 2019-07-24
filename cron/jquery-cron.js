@@ -30,7 +30,6 @@
  * At this stage, we only support a subset of possible cron options.
  * For example, each cron entry can only be digits or "*", no commas
  * to denote multiple entries. We also limit the allowed combinations:
- * - Every minute : * * * * *
  * - Every hour   : ? * * * *
  * - Every day    : ? ? * * *
  * - Every week   : ? ? * * ?
@@ -40,7 +39,7 @@
 (function($) {
 
     var defaults = {
-        initial : "* * * * *",
+        initial : "0 * * * *",
         minuteOpts : {
             minWidth  : 100, // only applies if columns and itemWidth not set
             itemWidth : 30,
@@ -182,7 +181,8 @@
         }
 
         // check format of initial cron value
-        var valid_cron = /^((\d{1,2}|\*)\s){4}(\d{1,2}|\*)$/
+        // do not allow a wildcard for minutes; a number must be present
+        var valid_cron = /^\d{1,2}\s((\d{1,2}|\*)\s){3}(\d{1,2}|\*)$/
         if (typeof cron_str != "string" || !valid_cron.test(cron_str)) {
             $.error("cron: invalid initial value");
             return undefined;
