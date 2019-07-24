@@ -141,14 +141,13 @@
 
     // options for period
     var str_opt_period = "";
-    var periods = ["minute", "hour", "day", "week", "month", "year"];
+    var periods = ["hour", "day", "week", "month", "year"];
     for (var i = 0; i < periods.length; i++) {
         str_opt_period += "<option value='"+periods[i]+"'>" + periods[i] + "</option>\n";
     }
 
     // display matrix
     var toDisplay = {
-        "minute" : [],
         "hour"   : ["mins"],
         "day"    : ["time"],
         "week"   : ["dow", "time"],
@@ -157,7 +156,6 @@
     };
 
     var combinations = {
-        "minute" : /^(\*\s){4}\*$/,                    // "* * * * *"
         "hour"   : /^\d{1,2}\s(\*\s){3}\*$/,           // "? * * * *"
         "day"    : /^(\d{1,2}\s){2}(\*\s){2}\*$/,      // "? ? * * *"
         "week"   : /^(\d{1,2}\s){2}(\*\s){2}\d{1,2}$/, // "? ? * * ?"
@@ -237,9 +235,6 @@
         var min = hour = day = month = dow = "*";
         var selectedPeriod = b["period"].find("select").val();
         switch (selectedPeriod) {
-            case "minute":
-                break;
-
             case "hour":
                 min = b["mins"].find("select").val();
                 break;
