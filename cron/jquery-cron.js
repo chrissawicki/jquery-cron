@@ -308,7 +308,7 @@
                     custom_periods += "<option value='" + cv[key] + "'>" + key + "</option>\n";
                 }
             }
-            
+
             var periodClass = (defined(o.periodOpts.class)) ? " class='" + o.periodOpts.class + "'" : "";
             block["period"] = $("<span class='cron-period'>"
                     + "Every <select name='cron-period'" + periodClass + ">" + custom_periods
@@ -361,11 +361,11 @@
             select = block["dow"].find("select").data("root", this);
             if (o.useGentleSelect) select.gentleSelect(o.dowOpts);
 
-            var timeMinuteClass = (defined(o.timeMinuteOpts.class)) ? " class='" + o.timeMinuteOpts.class + "'" : "";
-            var timeHourClass = (defined(o.timeHourOpts.class)) ? " class='" + o.timeHourOpts.class + "'" : "";
+            var timeMinuteClass = (defined(o.timeMinuteOpts.class)) ? " " + o.timeMinuteOpts.class : "";
+            var timeHourClass = (defined(o.timeHourOpts.class)) ? " " + o.timeHourOpts.class : "";
             block["time"] = $("<span class='cron-block cron-block-time'>"
-                    + " at <select name='cron-time-hour' class='cron-time-hour'" + timeMinuteClass + ">" + str_opt_hid
-                    + "</select>:<select name='cron-time-min' class='cron-time-min'" + timeHourClass + ">" + str_opt_mih
+                    + " at <select name='cron-time-hour' class='cron-time-hour" + timeMinuteClass + "'>" + str_opt_hid
+                    + "</select>:<select name='cron-time-min' class='cron-time-min" + timeHourClass + "'>" + str_opt_mih
                     + " </span>")
                 .appendTo(this)
                 .data("root", this);
@@ -400,9 +400,9 @@
             var block = this.data("block");
             var useGentleSelect = o.useGentleSelect;
             var t = getCronType(cron_str, o);
-            
+
             if (!defined(t)) { return false; }
-            
+
             if (defined(o.customValues) && o.customValues.hasOwnProperty(t)) {
                 t = o.customValues[t];
             } else {
@@ -431,7 +431,7 @@
                     }
                 }
             }
-            
+
             // trigger change event
             var bp = block["period"].find("select").val(t);
             if (useGentleSelect) bp.gentleSelect("update");
