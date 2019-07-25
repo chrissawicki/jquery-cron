@@ -139,6 +139,27 @@
         str_opt_month += "<option value='"+(i+1)+"'>" + months[i] + "</option>\n";
     }
 
+    // options for week of year
+    var str_opt_woy = "";
+    for (var i = 0; i < 52; i++) {
+      var j = (i < 10)? "0":"";
+      str_opt_woy += "<option value='"+i+"'>" + j + i + "</option>\n";
+    }
+
+    // options for hours
+    var str_opt_hours = "";
+    for (var i = 0; i < 24; i++) {
+      var j = (i < 10)? "0":"";
+      str_opt_hours += "<option value='"+i+"'>" + j + i + "</option>\n";
+    }
+
+    // options for year
+    var str_opt_year = "";
+    var curr_year = new Date().getFullYear();
+    for (var i = curr_year; i < 25; i++) {
+      str_opt_year += "<option value='"+i+"'>" + i + "</option>\n";
+    }
+
     // options for day of week
     var str_opt_dow = "";
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
@@ -162,6 +183,14 @@
         "month"  : ["dom", "time"],
         "year"   : ["dom", "month", "time"]
     };
+
+    var toDisplayStart = {
+        "hour"   : ["dom", "month", "hours"],
+        "day"    : ["dom", "month"],
+        "week"   : ["woy"],
+        "month"  : ["month"],
+        "year"   : ["year"]
+    }
 
     var combinations = {
         "hour"   : /^\d{1,2}\s(\*\s){3}\*$/,           // "? * * * *"
